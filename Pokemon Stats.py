@@ -37,6 +37,20 @@ def Legendary():
     plt.show()
 #print(Legendary())
 
+def LegendByGen():
+    Legnedary_index = pokemon.groupby('Generation').sum().Legendary.index
+    Legnedary_values = pokemon.groupby('Generation').sum().Legendary.values
+    sns.barplot(x=Legnedary_index, y=Legnedary_values)
+    plt.show()
+#print(LegendByGen())
+
+def LegendByType():
+    type_index = pokemon.groupby('Type 1').sum().Legendary.sort_values(ascending=False).index
+    type_vals = pokemon.groupby('Type 1').sum().Legendary.sort_values(ascending=False).values
+    sns.barplot(x=type_index,y=type_vals)
+    plt.show()
+#print(LegendByType())
+
 def Correlation():
     labels = pokemon[['Name','Type 1', 'Type 2','Total', 'HP', 'Attack', 'Defense','Sp. Atk','Sp. Def','Speed', 'Generation',
                       'Legendary']]
